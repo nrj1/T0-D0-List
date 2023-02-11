@@ -19,4 +19,4 @@ if __name__ == "__main__":
     print("Hello")
     print("This is a testament to the fact that only when this 'functions.py'\
     is run, does the if condition get executed here. Otherwise \
-    if the main.py file is run then the __name__ is funtions nd not '__main__'")
+    if the cli.py file is run then the __name__ is funtions nd not '__main__'")

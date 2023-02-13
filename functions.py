@@ -5,8 +5,8 @@ def get_todos():
      returning it stored in a list
      """
     with open(FILEPATH, 'r') as file:
-        todos = file.readlines()
-    return todos
+        todos_local = file.readlines()
+    return todos_local
 
 #print(help(get_todos))
 

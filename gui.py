@@ -7,11 +7,15 @@ add_button = psg.Button("Add")
 
 listbox = psg.Listbox(values=get_todos(), key='todos', enable_events=True, size=[45, 10])
 edit_button = psg.Button("Edit")
+complete_button = psg.Button("Complete")
+exit_button = psg.Button("Exit")
 
 
-window = psg.Window("T0-D0 LIST", layout=[[label], [input_box, add_button], [listbox, edit_button]],
-                    font="Helvetica"
-                    )
+window = psg.Window("T0-D0 LIST", layout=[[label],
+                                          [input_box, add_button],
+                                          [listbox, edit_button, complete_button],
+                                          [exit_button]],
+                    font="Helvetica")
 
 while True:
 
@@ -41,7 +45,20 @@ while True:
             window['todos'].update(values=todos)
 
         case 'todos':
-            window['todo'].update(values=value['todos'][0])
+            window['todo'].update(value=value['todos'][0])
+
+        case 'Complete':
+            todos = get_todos()
+            y = value['todos'][0]
+            print(y)
+            todos.remove(y)
+            write_todos(todos)
+            window['todo'].update(value='')
+            window['todos'].update(values=todos)
+
+        case "Exit":
+            exit()
+
         case psg.WIN_CLOSED:
             break
 

@@ -35,14 +35,21 @@ while True:
 
 
         case "Edit":
-            todo_to_edit = value['todos'][0]
-            new_todo = value["todo"]
+            try:
+                todo_to_edit = value['todos'][0]
+                new_todo = value["todo"]
 
-            todos = get_todos()
-            index = todos.index(todo_to_edit)
-            todos[index] = new_todo
-            write_todos(todos)
-            window['todos'].update(values=todos)
+                todos = get_todos()
+                index = todos.index(todo_to_edit)
+                todos[index] = new_todo
+                write_todos(todos)
+                window['todos'].update(values=todos)
+                window['todo'].update(value="")
+            except IndexError:
+                psg.popup("Please select the file", font=("Helvetica", 20))
+                #print("Please select the file to be edited first,"\
+                #      "followed by typing the new file name that" \
+                 #     "replaces the former and then click the Edit button")
 
         case 'todos':
             window['todo'].update(value=value['todos'][0])
